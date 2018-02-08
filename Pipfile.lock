@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cd18e9f1187834efdd2be7239d4a15b49903ecd463efbed2bc540c4193731234"
+            "sha256": "195157bdd627407ad8478fa362d897ef95fd48882d2eca9295f5852503462934"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -29,6 +29,12 @@
         ]
     },
     "default": {
+        "72eb2aa": {
+            "extras": [
+                "voice"
+            ],
+            "file": "https://github.com/Rapptz/discord.py/archive/rewrite.zip"
+        },
         "aiohttp": {
             "hashes": [
                 "sha256:81a6aaace2b9e8a87531277a5d5f998efbd3554c15bf47173834386966d1bbe1",

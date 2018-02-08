@@ -13,6 +13,7 @@ name = "pypi"
 
 discord = "*"
 python-dotenv = "*"
+"72eb2aa" = {extras = ["voice"], file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip"}
 
 
 [requires]

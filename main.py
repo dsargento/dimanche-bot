@@ -2,34 +2,75 @@
 
 import os
 from os.path import join, dirname
+from subprocess import call
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
+description = '''I am Dimanche bot, and soon I'll take over the world!'''
+bot = commands.Bot(command_prefix='!', description=description)
 
-client = discord.Client()
 
-
-@client.event
+@bot.event
 async def on_ready():
     print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
+    print(bot.user.name)
+    print(bot.user.id)
     print('------')
 
-    @client.event
-    async def on_message(message):
-        if message.content.startswith('!return '):
-            msg = message.content
-            content = msg.split('!return ', 1)[1]
-            await client.send_message(message.channel, "Your message is {}".format(content))
-        if message.content.startswith("!playing "):
-            msg = message.content
-            content = msg.split("!playing ", 1)[1]
-            await client.change_presence(game=discord.Game(name=content))
-        if message.content.startswith("!ping"):
-            await client.send_message(message.channel, "Pong!")
-        if message.content.startswith("pouet pouet"):
-            await client.send_message(message.channel, "Camion!")
-client.run(os.environ.get("DISCORD_KEY"))
+
+@bot.command()
+async def return_message(ctx, message):
+    await ctx.send("Your message is {}".format(message))
+
+
+@bot.command()
+async def playing(ctx, message):
+    msg = message.content
+    content = msg.split("!playing ", 1)[1]
+    await bot.change_presence(game=discord.Game(name=content))
+
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send("Pong!")
+
+
+@bot.command()
+async def pouet_pouet(ctx):
+    await ctx.send("Camion!")
+
+
+@bot.command(pass_context=True)
+async def my_name(ctx, member: discord.Member = None):
+    if member is None:
+        member = ctx.message.author.id
+    await ctx.send('Your user id is {0}'.format(member))
+
+
+@bot.command(pass_context=True)
+async def start_svn_logging(ctx, member: discord.Member = None):
+    if member is None:
+        member = ctx.message.author.id
+    if member == 106437607738589184:
+        await ctx.send('Your user id is {0}, identified as root operator\n'
+                       'Starting SVN logging...'.format(member))
+        call('cd /home/pi/Documents/scriptsvn')
+        call('pm2 start app.js')
+        return
+    await ctx.send('Your user id is {0}, you are not root'.format(member))
+
+
+async def stop_svn_logging(ctx, member: discord.Member = None):
+    if member is None:
+        member = ctx.message.author.id
+    if member == 106437607738589184:
+        await ctx.send('Your user id is {0}, identified as root operator\n'
+                       'Stopping SVN logging...'.format(member))
+        call('cd /home/pi/Documents/scriptsvn')
+        call('pm2 stop app.js')
+        return
+    await ctx.send('Your user id is {0}, you are not root'.format(member))
+bot.run(os.environ.get("DISCORD_KEY"))
