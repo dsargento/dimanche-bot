@@ -62,7 +62,7 @@ async def start_svn_logging(ctx, member: discord.Member = None):
         return
     await ctx.send('Your user id is {0}, you are not root'.format(member))
 
-
+@bot.command(pass_context=True)
 async def stop_svn_logging(ctx, member: discord.Member = None):
     if member is None:
         member = ctx.message.author.id
