@@ -30,7 +30,7 @@ async def return_message(ctx, message):
 async def playing(ctx, message):
     msg = message.content
     content = msg.split("!playing ", 1)[1]
-    await bot.change_presence(game=discord.Game(name=content))
+    await ctx.change_presence(game=discord.Game(name=content))
 
 
 @bot.command()
