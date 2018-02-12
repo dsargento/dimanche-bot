@@ -11,11 +11,10 @@ name = "pypi"
 
 [packages]
 
-discord = "*"
 python-dotenv = "*"
 "72eb2aa" = {extras = ["voice"], file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip"}
 
 
 [requires]
 
-python_version = "3.6"
+python_version = "3.5"

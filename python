@@ -1,0 +1,10 @@
+source /home/pi/.local/share/virtualenvs/dimanche-bot-4BX67r0n/bin/activate
+main.py
+]0;pi@raspberrypi: ~/Projects/dimanche-bot[01;32mpi@raspberrypi[00m:[01;34m~/Projects/dimanche-bot $[00m source /home/pi/.local/share/virtualenv s/dimanche-bot-4BX67r0n/bin/activate
+(dimanche-bot-4BX67r0n) ]0;pi@raspberrypi: ~/Projects/dimanche-bot[01;32mpi@raspberrypi[00m:[01;34m~/Projects/dimanche-bot $[00m main.py
+bash: main.py : commande introuvable
+(dimanche-bot-4BX67r0n) ]0;pi@raspberrypi: ~/Projects/dimanche-bot[01;32mpi@raspberrypi[00m:[01;34m~/Projects/dimanche-bot $[00m ^C
+(dimanche-bot-4BX67r0n) ]0;pi@raspberrypi: ~/Projects/dimanche-bot[01;32mpi@raspberrypi[00m:[01;34m~/Projects/dimanche-bot $[00m ^C
+(dimanche-bot-4BX67r0n) ]0;pi@raspberrypi: ~/Projects/dimanche-bot[01;32mpi@raspberrypi[00m:[01;34m~/Projects/dimanche-bot $[00m ^C
+(dimanche-bot-4BX67r0n) ]0;pi@raspberrypi: ~/Projects/dimanche-bot[01;32mpi@raspberrypi[00m:[01;34m~/Projects/dimanche-bot $[00m exit
+exit
