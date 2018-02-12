@@ -22,13 +22,13 @@ async def on_ready():
 
 
 @bot.command()
-async def return_message(ctx, message):
-    await ctx.send("Your message is {}".format(message))
+async def return_message(ctx, *, arg):
+    await ctx.send("Your message is {}".format(arg))
 
 
 @bot.command()
-async def playing(ctx, message):
-    await ctx.bot.change_presence(game=discord.Game(name=message))
+async def playing(ctx, *, arg):
+    await ctx.bot.change_presence(game=discord.Game(name=arg))
 
 
 @bot.command()
