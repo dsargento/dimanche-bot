@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3.6
 
 import os
 from os.path import join, dirname
@@ -28,9 +28,7 @@ async def return_message(ctx, message):
 
 @bot.command()
 async def playing(ctx, message):
-    msg = message.content
-    content = msg.split("!playing ", 1)[1]
-    await ctx.change_presence(game=discord.Game(name=content))
+    await ctx.bot.change_presence(game=discord.Game(name=message))
 
 
 @bot.command()
