@@ -12,6 +12,8 @@ load_dotenv(dotenv_path)
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
 bot = commands.Bot(command_prefix='!', description=description)
 
+startup_extensions = ["plugins.secret"]
+
 
 @bot.event
 async def on_ready():
@@ -19,6 +21,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
+    bot.load_extension("plugins.secret")
 
 
 @bot.command()
@@ -59,6 +62,7 @@ async def start_svn_logging(ctx, member: discord.Member = None):
         call('pm2 start app.js')
         return
     await ctx.send('Your user id is {0}, you are not root'.format(member))
+
 
 @bot.command(pass_context=True)
 async def stop_svn_logging(ctx, member: discord.Member = None):
