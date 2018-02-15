@@ -18,7 +18,7 @@ class Secret:
         role = discord.utils.get(guild.roles, name=os.environ.get("PRIVATE_GROUP_NAME"))
         return role.members
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def secret_call(self, ctx, *, arg):
         member_list = self.get_roles(ctx)
         member_from = ctx.message.author.name
