@@ -12,7 +12,7 @@ name = "pypi"
 [packages]
 
 python-dotenv = "*"
-"72eb2aa" = {extras = ["voice"], file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip"}
+"discord.py" = {git = "https://github.com/Rapptz/discord.py", ref = "rewrite", extras = ["voice"]}
 
 
 [requires]

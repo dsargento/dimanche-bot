@@ -20,6 +20,7 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
+    print(discord.__version__)
     print('------')
     bot.load_extension("plugins.secret")
 
@@ -28,6 +29,8 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('pouet pouet'):
         await message.channel.send('GET OUT OF MY HEAD')
+    await bot.process_commands(message)
+
 
 @bot.command()
 async def return_message(ctx, *, arg):
