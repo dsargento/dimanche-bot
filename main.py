@@ -29,6 +29,11 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('pouet pouet'):
         await message.channel.send('GET OUT OF MY HEAD')
+    cursed_members = os.environ.get("CURSED_MEMBERS").split()
+    cursed_members = list(map(int, cursed_members))
+    print(cursed_members)
+    if message.author.id in cursed_members:
+        await message.add_reaction('\N{RED HEART}')
     await bot.process_commands(message)
 
 
