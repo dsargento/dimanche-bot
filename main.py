@@ -24,6 +24,11 @@ async def on_ready():
     bot.load_extension("plugins.secret")
 
 
+@bot.event
+async def on_message(message):
+    if message.content.startswith('pouet pouet'):
+        await message.channel.send('GET OUT OF MY HEAD')
+
 @bot.command()
 async def return_message(ctx, *, arg):
     await ctx.send("Your message is {}".format(arg))
