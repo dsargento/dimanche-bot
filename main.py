@@ -33,7 +33,7 @@ async def on_message(message):
     cursed_members = list(map(int, cursed_members))
     print(cursed_members)
     if message.author.id in cursed_members:
-        await message.add_reaction('\N{RED HEART}')
+        await message.add_reaction('\N{HEAVY BLACK HEART}')
     await bot.process_commands(message)
 
 
