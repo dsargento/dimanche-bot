@@ -12,16 +12,14 @@ from dotenv import load_dotenv
 
 if not os.path.exists('logs'):
     os.makedirs('logs')
-log_format = "%(asctime)s - %(levelname)s - %(message)s"
-log_level = 10
-logger = logging.getLogger('simple')
-handler = TimedRotatingFileHandler("logs/discord_bot.log", when="midnight", interval=1)
-handler.setLevel(log_level)
-formatter = logging.Formatter(log_format)
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler('logs/dimanche_bot.log')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
-handler.suffix = "%Y%d%m"
-handler.extMatch = re.compile(r"^\d{8}$")
 logger.addHandler(handler)
+
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
@@ -46,7 +44,6 @@ async def on_message(message):
         await message.channel.send('GET OUT OF MY HEAD')
     cursed_members = os.environ.get("CURSED_MEMBERS").split()
     cursed_members = list(map(int, cursed_members))
-    print(cursed_members)
     if message.author.id in cursed_members:
         await message.add_reaction('\N{HEAVY BLACK HEART}')
     await bot.process_commands(message)
@@ -58,15 +55,18 @@ async def return_message(ctx, *, arg):
 
 
 @bot.command()
-async def playing(ctx, *, arg):
+async def playing(ctx, *, arg, member: discord.member = None):
+    if member is None:
+        member = ctx.message.author
+    logger.info("{} ({}) used Playing with args: {}".format(member.name, member.id, arg))
     await ctx.bot.change_presence(game=discord.Game(name=arg))
 
 
 @bot.command()
 async def ping(ctx, member: discord.Member = None):
     if member is None:
-        member = ctx.message.author.id
-    logger.info("{} used Ping".format(member))
+        member = ctx.message.author
+    logger.info("{} ({}) used Ping".format(member.name, member.id))
     await ctx.send("Pong!")
 
 
