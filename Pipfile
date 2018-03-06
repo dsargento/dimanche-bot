@@ -13,6 +13,7 @@ name = "pypi"
 
 python-dotenv = "*"
 "discord.py" = {git = "https://github.com/Rapptz/discord.py", ref = "rewrite", extras = ["voice"]}
+master = {git = "https://github.com/bgreenlee/pygtail"}
 
 
 [requires]

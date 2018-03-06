@@ -3,9 +3,8 @@
 import os
 from os.path import join, dirname
 from subprocess import call
+from pygtail import Pygtail
 import logging
-import re
-from logging.handlers import TimedRotatingFileHandler
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -22,7 +21,12 @@ logger.addHandler(handler)
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
+#Load env values
+OWNER = os.environ.get("OWNER")
+DISCORD_KEY = os.environ.get("DISCORD_KEY")
+CURSED_MEMBERS = os.environ.get("CURSED_MEMBERS")
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
+
 bot = commands.Bot(command_prefix='!', description=description)
 
 startup_extensions = ["plugins.secret"]
@@ -42,7 +46,7 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('pouet pouet'):
         await message.channel.send('GET OUT OF MY HEAD')
-    cursed_members = os.environ.get("CURSED_MEMBERS").split()
+    cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
     if message.author.id in cursed_members:
         await message.add_reaction('\N{HEAVY BLACK HEART}')
@@ -86,7 +90,7 @@ async def my_name(ctx, member: discord.Member = None):
 async def start_svn_logging(ctx, member: discord.Member = None):
     if member is None:
         member = ctx.message.author.id
-    if member == 106437607738589184:
+    if member == OWNER:
         await ctx.send('Your user id is {0}, identified as root operator\n'
                        'Starting SVN logging...'.format(member))
         call('cd /home/pi/Documents/scriptsvn')
@@ -99,11 +103,22 @@ async def start_svn_logging(ctx, member: discord.Member = None):
 async def stop_svn_logging(ctx, member: discord.Member = None):
     if member is None:
         member = ctx.message.author.id
-    if member == 106437607738589184:
+    if member == OWNER:
         await ctx.send('Your user id is {0}, identified as root operator\n'
                        'Stopping SVN logging...'.format(member))
         call('cd /home/pi/Documents/scriptsvn')
         call('pm2 stop app.js')
         return
     await ctx.send('Your user id is {0}, you are not root'.format(member))
-bot.run(os.environ.get("DISCORD_KEY"))
+
+
+@bot.command(pass_context=True)
+async def tail_logs(ctx, member: discord.Member = None):
+    if member is None:
+        member = ctx.message.author.id
+    if member == OWNER:
+        for line in Pygtail("logs/dimanche_bot.log"):
+            await ctx.send('``{}``'.format(line))
+
+
+bot.run(DISCORD_KEY)

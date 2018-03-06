@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "50d4d669156cff2e8f8a588127a78c7af715cd22e97e301ca908c99f0cbaee24"
+            "sha256": "7ea9a9e6daf0385883317744fc45ba762537742d9fa7e26d95dc229d671071ac"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -29,6 +29,9 @@
             ],
             "git": "https://github.com/Rapptz/discord.py",
             "ref": "rewrite"
+        },
+        "master": {
+            "git": "https://github.com/bgreenlee/pygtail"
         },
         "python-dotenv": {
             "hashes": [
