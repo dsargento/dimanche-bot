@@ -22,7 +22,7 @@ logger.addHandler(handler)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 #Load env values
-OWNER = os.environ.get("OWNER")
+OWNER = int(os.environ.get("OWNER"))
 DISCORD_KEY = os.environ.get("DISCORD_KEY")
 CURSED_MEMBERS = os.environ.get("CURSED_MEMBERS")
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
