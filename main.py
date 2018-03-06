@@ -63,7 +63,8 @@ async def playing(ctx, *, arg, member: discord.member = None):
     if member is None:
         member = ctx.message.author
     logger.info("{} ({}) used Playing with args: {}".format(member.name, member.id, arg))
-    await ctx.bot.activity(game=discord.Game(name=arg))
+    await bot.change_presence(activity=discord.Game(name=arg))
+
 
 
 @bot.command()
