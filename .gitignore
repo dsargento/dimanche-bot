@@ -4,4 +4,4 @@ MYENV
 bin
 include
 lib/python*
-
+logs

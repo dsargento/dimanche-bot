@@ -3,10 +3,25 @@
 import os
 from os.path import join, dirname
 from subprocess import call
+import logging
+import re
+from logging.handlers import TimedRotatingFileHandler
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+if not os.path.exists('logs'):
+    os.makedirs('logs')
+log_format = "%(asctime)s - %(levelname)s - %(message)s"
+log_level = 10
+logger = logging.getLogger('simple')
+handler = TimedRotatingFileHandler("logs/discord_bot.log", when="midnight", interval=1)
+handler.setLevel(log_level)
+formatter = logging.Formatter(log_format)
+handler.setFormatter(formatter)
+handler.suffix = "%Y%d%m"
+handler.extMatch = re.compile(r"^\d{8}$")
+logger.addHandler(handler)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
@@ -48,7 +63,10 @@ async def playing(ctx, *, arg):
 
 
 @bot.command()
-async def ping(ctx):
+async def ping(ctx, member: discord.Member = None):
+    if member is None:
+        member = ctx.message.author.id
+    logger.info("{} used Ping".format(member))
     await ctx.send("Pong!")
 
 

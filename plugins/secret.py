@@ -1,6 +1,7 @@
 import os
 from os.path import join, dirname
 import discord
+import logging
 from datetime import datetime
 from discord.ext import commands
 from dotenv import load_dotenv
