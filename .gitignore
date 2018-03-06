@@ -1,7 +1,6 @@
 .env
 .idea
 MYENV
-plugins
 bin
 include
 lib/python*
