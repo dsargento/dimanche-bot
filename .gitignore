@@ -5,4 +5,4 @@ plugins
 bin
 include
 lib/python*
-plugins
+
