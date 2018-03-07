@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 if not os.path.exists('logs'):
     os.makedirs('logs')
-
+# Init Logger
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = logging.FileHandler('logs/dimanche_bot.log')
@@ -19,17 +19,17 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+#Load env values
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-#Load env values
 OWNER = int(os.environ.get("OWNER"))
 DISCORD_KEY = os.environ.get("DISCORD_KEY")
 CURSED_MEMBERS = os.environ.get("CURSED_MEMBERS")
+
+#Bot setup
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
-
 bot = commands.Bot(command_prefix='!', description=description)
-
-startup_extensions = ["plugins.secret"]
+startup_extensions = ["plugins.secret", "plugins.music"]
 
 
 @bot.event
@@ -40,6 +40,7 @@ async def on_ready():
     print(discord.__version__)
     print('------')
     bot.load_extension("plugins.secret")
+    bot.load_extension("plugins.music")
 
 
 @bot.event
@@ -74,6 +75,13 @@ async def ping(ctx, member: discord.Member = None):
     logger.info("{} ({}) used Ping".format(member.name, member.id))
     await ctx.send("Pong!")
 
+@bot.command()
+async def info(ctx, member: discord.Member = None):
+    guilds = bot.guilds
+    guilds_list = []
+    for guild in guilds:
+        guilds_list.append(guild.name)
+    await ctx.send(guilds)
 
 @bot.command()
 async def pouet_pouet(ctx):

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7ea9a9e6daf0385883317744fc45ba762537742d9fa7e26d95dc229d671071ac"
+            "sha256": "a910c2ea0679390bcf1eff3e38bb6ad9e69095bfab4a706cc019b3aaa6f5887b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,13 +16,6 @@
         ]
     },
     "default": {
-        "click": {
-            "hashes": [
-                "sha256:29f99fc6125fbc931b758dc053b3114e55c77a6e4c6c3a2674a2dc986016381d",
-                "sha256:f15516df478d5a56180fbf80e68f206010e6d160fc39fa508b65e035fd75130b"
-            ],
-            "version": "==6.7"
-        },
         "discord.py": {
             "extras": [
                 "voice"
@@ -35,10 +28,17 @@
         },
         "python-dotenv": {
             "hashes": [
-                "sha256:2a0073a6f7a10156de2ab7d8c2399b5e86ac61786206f6e1b4a1fcad92fa2dd1",
-                "sha256:2bfeb2ce1b5d1ce46ecdce5c9d55e4976ca403fdcc251b4870e5c0647d0dce67"
+                "sha256:4965ed170bf51c347a89820e8050655e9c25db3837db6602e906b6d850fad85c",
+                "sha256:509736185257111613009974e666568a1b031b028b61b500ef1ab4ee780089d5"
             ],
-            "version": "==0.8.0"
+            "version": "==0.8.2"
+        },
+        "youtube-dl": {
+            "hashes": [
+                "sha256:4a789f65b931e421fd24513fd5355310fbba787985a0465e0f9de75ec41e59b8",
+                "sha256:5f61ed33df754784cfd5b3c1f5b64f44d398123cf887245cb8921d7f531b82c0"
+            ],
+            "version": "==2018.3.3"
         }
     },
     "develop": {}
