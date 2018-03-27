@@ -93,8 +93,7 @@ async def info(ctx, member: discord.Member = None):
                           timestamp=datetime.datetime.utcfromtimestamp(1522146769))
     embed.set_footer(text="footer text", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
     embed.add_field(name="CPU Load", value=str(psutil.cpu_percent())+'%', inline=True)
-    embed.add_field(name="RAM", value=str(psutil.virtual_memory().percent)+'%', inline=True)
-    embed.add_field(name="Uptime", value="")
+    embed.add_field(name="RAM Usage", value=str(psutil.virtual_memory().percent)+'%', inline=True)
 
     await ctx.send(embed=embed)
     #await ctx.send(guilds)
