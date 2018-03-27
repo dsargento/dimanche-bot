@@ -82,7 +82,9 @@ async def ping(ctx, member: discord.Member = None):
     if member is None:
         member = ctx.message.author
     logger.info("{} ({}) used Ping".format(member.name, member.id))
-    await ctx.send("Pong!")
+    resp = await ctx.send('Pong! Loading...')
+    diff = resp.created_at - ctx.message.created_at
+    await resp.edit(content=f'Pong! That took {1000*diff.total_seconds():.1f}ms.')
 
 @bot.command()
 async def info(ctx, member: discord.Member = None):
@@ -95,7 +97,7 @@ async def info(ctx, member: discord.Member = None):
     embed.add_field(name="CPU Load", value=str(psutil.cpu_percent())+'%', inline=True)
     embed.add_field(name="RAM Usage", value=str(psutil.virtual_memory().percent)+'%', inline=True)
     embed.add_field(name="Joined guilds", value=guilds)
-    embed.add_field(name="Uptime", value=datetime.now() - boot_time)
+    embed.add_field(name="Uptime", value=(datetime.now() - boot_time).strftime("%Y-%m-%d %H:%M"))
 
     await ctx.send(embed=embed)
     #await ctx.send(guilds)
