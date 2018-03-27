@@ -3,8 +3,12 @@
 import os
 from os.path import join, dirname
 from subprocess import call
+import datetime
+from subprocess import check_output
+from hurry.filesize import size
 from pygtail import Pygtail
 import logging
+import psutil
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -85,7 +89,15 @@ async def info(ctx, member: discord.Member = None):
     guilds_list = []
     for guild in guilds:
         guilds_list.append(guild.name)
-    await ctx.send(guilds)
+    embed = discord.Embed(title="title", colour=discord.Colour(0x7ed321),
+                          timestamp=datetime.datetime.utcfromtimestamp(1522146769))
+    embed.set_footer(text="footer text", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
+    embed.add_field(name="CPU Load", value=str(psutil.cpu_percent())+'%', inline=True)
+    embed.add_field(name="RAM", value=str(psutil.virtual_memory().percent)+'%', inline=True)
+    embed.add_field(name="Uptime", value="")
+
+    await ctx.send(embed=embed)
+    #await ctx.send(guilds)
 
 @bot.command()
 async def pouet_pouet(ctx):

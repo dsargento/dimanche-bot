@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a910c2ea0679390bcf1eff3e38bb6ad9e69095bfab4a706cc019b3aaa6f5887b"
+            "sha256": "820663922357e65eeb3772c3432254b0f659c0ef3067e4a20966a8d37d8b115c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,8 +23,28 @@
             "git": "https://github.com/Rapptz/discord.py",
             "ref": "rewrite"
         },
+        "hurry.filesize": {
+            "hashes": [
+                "sha256:f5368329adbef86accd3bc9490522340bb79260455ae89b1a42c10f63801b9a6"
+            ],
+            "version": "==0.9"
+        },
         "master": {
             "git": "https://github.com/bgreenlee/pygtail"
+        },
+        "psutil": {
+            "hashes": [
+                "sha256:230eeb3aeb077814f3a2cd036ddb6e0f571960d327298cc914c02385c3e02a63",
+                "sha256:4152ae231709e3e8b80e26b6da20dc965a1a589959c48af1ed024eca6473f60d",
+                "sha256:779ec7e7621758ca11a8d99a1064996454b3570154277cc21342a01148a49c28",
+                "sha256:82a06785db8eeb637b349006cc28a92e40cd190fefae9875246d18d0de7ccac8",
+                "sha256:8a15d773203a1277e57b1d11a7ccdf70804744ef4a9518a87ab8436995c31a4b",
+                "sha256:94d4e63189f2593960e73acaaf96be235dd8a455fe2bcb37d8ad6f0e87f61556",
+                "sha256:a3286556d4d2f341108db65d8e20d0cd3fcb9a91741cb5eb496832d7daf2a97c",
+                "sha256:c91eee73eea00df5e62c741b380b7e5b6fdd553891bee5669817a3a38d036f13",
+                "sha256:e2467e9312c2fa191687b89ff4bc2ad8843be4af6fb4dc95a7cc5f7d7a327b18"
+            ],
+            "version": "==5.4.3"
         },
         "python-dotenv": {
             "hashes": [
@@ -35,10 +55,10 @@
         },
         "youtube-dl": {
             "hashes": [
-                "sha256:4a789f65b931e421fd24513fd5355310fbba787985a0465e0f9de75ec41e59b8",
-                "sha256:5f61ed33df754784cfd5b3c1f5b64f44d398123cf887245cb8921d7f531b82c0"
+                "sha256:ddbe6ea150746d58af3b0177f6623953a7158e0ae3f1c1c38860e2e5a8e2d52b",
+                "sha256:f10e4fcdd7d4093aef488d4afb5c88b6812dbbc4e47d42459573e83cd2023f00"
             ],
-            "version": "==2018.3.3"
+            "version": "==2018.3.26.1"
         }
     },
     "develop": {}
