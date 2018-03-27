@@ -47,6 +47,8 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('pouet pouet'):
         await message.channel.send('GET OUT OF MY HEAD')
+    if message.content.startswith('@everyone') or message.content.startswith('@here'):
+        await message.channel.send('<:notifdog:375779565206765578>')
     cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
     if message.author.id in cursed_members:
