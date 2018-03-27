@@ -3,7 +3,7 @@
 import os
 from os.path import join, dirname
 from subprocess import call
-import datetime
+from datetime import datetime
 from subprocess import check_output
 from hurry.filesize import size
 from pygtail import Pygtail
@@ -25,6 +25,7 @@ logger.addHandler(handler)
 
 #Load env values
 dotenv_path = join(dirname(__file__), '.env')
+pid = os.getpid()
 load_dotenv(dotenv_path)
 OWNER = int(os.environ.get("OWNER"))
 DISCORD_KEY = os.environ.get("DISCORD_KEY")
@@ -85,15 +86,16 @@ async def ping(ctx, member: discord.Member = None):
 
 @bot.command()
 async def info(ctx, member: discord.Member = None):
-    guilds = bot.guilds
-    guilds_list = []
-    for guild in guilds:
-        guilds_list.append(guild.name)
-    embed = discord.Embed(title="title", colour=discord.Colour(0x7ed321),
-                          timestamp=datetime.datetime.utcfromtimestamp(1522146769))
-    embed.set_footer(text="footer text", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
+    guilds = len(bot.guilds)
+    process = psutil.Process(pid)
+    boot_time = datetime.fromtimestamp(process.create_time())
+    embed = discord.Embed(title="Dimanche bot stats and info", colour=discord.Colour(0x7ed321),
+                          timestamp=datetime.now())
+    embed.set_footer(text="Help me", icon_url="https://cdn.discordapp.com/avatars/395686427100184587/71ff314a744afc3ea1e7bb51d4c58eb5.webp?size=128")
     embed.add_field(name="CPU Load", value=str(psutil.cpu_percent())+'%', inline=True)
     embed.add_field(name="RAM Usage", value=str(psutil.virtual_memory().percent)+'%', inline=True)
+    embed.add_field(name="Joined guilds", value=guilds)
+    embed.add_field(name="Uptime", value=datetime.now() - boot_time)
 
     await ctx.send(embed=embed)
     #await ctx.send(guilds)
