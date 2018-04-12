@@ -23,7 +23,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-#Load env values
+# Load env values
 dotenv_path = join(dirname(__file__), '.env')
 pid = os.getpid()
 load_dotenv(dotenv_path)
@@ -31,7 +31,7 @@ OWNER = int(os.environ.get("OWNER"))
 DISCORD_KEY = os.environ.get("DISCORD_KEY")
 CURSED_MEMBERS = os.environ.get("CURSED_MEMBERS")
 
-#Bot setup
+# Bot setup
 description = '''I am Dimanche bot, and soon I'll take over the world!'''
 bot = commands.Bot(command_prefix='!', description=description)
 startup_extensions = ["plugins.secret", "plugins.music"]
@@ -76,7 +76,6 @@ async def playing(ctx, *, arg, member: discord.member = None):
     await bot.change_presence(activity=discord.Game(name=arg))
 
 
-
 @bot.command()
 async def ping(ctx, member: discord.Member = None):
     if member is None:
@@ -85,6 +84,7 @@ async def ping(ctx, member: discord.Member = None):
     resp = await ctx.send('Pong! Loading...')
     diff = resp.created_at - ctx.message.created_at
     await resp.edit(content=f'Pong! That took {1000*diff.total_seconds():.1f}ms.')
+
 
 @bot.command()
 async def info(ctx, member: discord.Member = None):
@@ -100,7 +100,7 @@ async def info(ctx, member: discord.Member = None):
     embed.add_field(name="Uptime", value=datetime.now() - boot_time)
 
     await ctx.send(embed=embed)
-    #await ctx.send(guilds)
+
 
 @bot.command()
 async def pouet_pouet(ctx):
