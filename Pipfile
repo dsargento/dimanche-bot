@@ -17,6 +17,7 @@ master = {git = "https://github.com/bgreenlee/pygtail"}
 youtube-dl = "*"
 psutil = "*"
 "hurry.filesize" = "*"
+pynacl = "*"
 
 
 [requires]
