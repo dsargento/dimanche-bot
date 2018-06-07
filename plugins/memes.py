@@ -20,8 +20,9 @@ class Memes:
     async def add_meme(self, ctx, arg):
         url = arg
         # Count files in directory for image renaming
-        count = len([next(os.walk('src/images'))[2]])
-        count = str(count + 1).zfill(3)
+        count = os.listdir('src/images/')
+        count = str(len(count)+1).zfill(3)
+        print(count)
         response = requests.get(url)
         img_data = response.content
         content_type = response.headers['content-type']
