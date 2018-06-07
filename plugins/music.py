@@ -66,7 +66,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         await entry.channel.send(f'```ini\n[Added: {data["title"]} to the queue.]\n```', delete_after=15)
 
         filename = ytdl.prepare_filename(data)
-        player.song_path.append(filename)
+        player.song_path = filename
         await player.queue.put(cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data, entry=entry,
                                    volume=player.volume))
 
@@ -89,7 +89,7 @@ class MusicPlayer:
         self.volume = .4
 
         self.now_playing = None
-        self.song_path = list()
+        self.song_path = None
         self.player_task = self.bot.loop.create_task(self.player_loop())
 
     async def player_loop(self):
@@ -111,9 +111,8 @@ class MusicPlayer:
             # You can call call async/standard functions here, right after the song has finished.
 
             # Remove dowloaded file after it is played
-            if isfile(self.song_path[0]):
-                await os.remove(self.song_path[0])
-                self.song_path.pop(0)
+            if isfile(self.song_path):
+                await os.remove(self.song_path)
             try:
                 await self.now_playing.delete()
             except discord.HTTPException:
@@ -219,9 +218,8 @@ class Music:
             return
 
         player = self.get_player(ctx)
-        if isfile(player.song_path[0]):
-            await os.remove(player.song_path[0])
-            player.song_path.pop(0)
+        if isfile(player.song_path):
+            await os.remove(player.song_path)
         vc.stop()
         try:
             player.player_task.cancel()
@@ -264,10 +262,8 @@ class Music:
         vc = ctx.guild.voice_client
         player = self.get_player(ctx)
 
-        if isfile(player.song_path[0]):
-            await os.remove(player.song_path[0])
-            player.song_path.pop(0)
-
+        if isfile(player.song_path):
+            await os.remove(player.song_path)
         if vc is None or not vc.is_connected():
             return await ctx.send('I am not currently playing anything.', delete_after=20)
 
