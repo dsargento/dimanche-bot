@@ -47,7 +47,7 @@ async def on_ready():
     print('------')
     bot.load_extension("plugins.secret")
     bot.load_extension("plugins.music")
-
+    bot.load_extension("plugins.memes")
 
 @bot.event
 async def on_message(message):

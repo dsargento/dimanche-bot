@@ -7,3 +7,5 @@ include
 lib/python*
 logs
 downloads
+src/images/meme_*
+.directory
