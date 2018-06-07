@@ -30,7 +30,7 @@ class Memes:
             extension = '.jpg'
         with open('src/images/meme_'+count+extension, 'wb') as handler:
             handler.write(img_data)
-        ctx.send('Added image meme_'+count+extension)
+        await ctx.send('Added image meme_'+count+extension)
 
 
 def setup(bot):
