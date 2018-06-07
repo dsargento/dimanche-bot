@@ -18,6 +18,7 @@ youtube-dl = "*"
 psutil = "*"
 "hurry.filesize" = "*"
 pynacl = "*"
+yarl = "<1.2"
 
 
 [requires]
