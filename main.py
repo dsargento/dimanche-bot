@@ -1,6 +1,7 @@
 #!/usr/bin/python3.6
 
 import os
+import random
 from os.path import join, dirname
 from subprocess import call
 from datetime import datetime
@@ -56,6 +57,8 @@ async def on_message(message):
         await message.channel.send('<:notifdog:375779565206765578>')
     if '<@395686427100184587>' in message.content or '<@!395686427100184587>' in message.content:
         await message.channel.send('\U0001f44b')
+    if '<@&313664375657594880>' in message.content:
+        await send_random_meme(message)
     cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
     if message.author.id in cursed_members:
@@ -148,5 +151,12 @@ async def tail_logs(ctx, member: discord.Member = None):
         for line in Pygtail("logs/dimanche_bot.log"):
             await ctx.send('``{}``'.format(line))
 
+
+async def send_random_meme(message):
+    path = 'src/images/'
+    random_meme = random.choice([x for x in os.listdir(path)
+                                if os.path.isfile(os.path.join(path, x))])
+    path = path + random_meme
+    await message.channel.send(file=discord.File(path))
 
 bot.run(DISCORD_KEY)
