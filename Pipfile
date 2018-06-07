@@ -19,6 +19,7 @@ psutil = "*"
 "hurry.filesize" = "*"
 pynacl = "*"
 yarl = "<1.2"
+requests = "*"
 
 
 [requires]
