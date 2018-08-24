@@ -59,6 +59,8 @@ async def on_message(message):
         await message.channel.send('\U0001f44b')
     if '<@&313664375657594880>' in message.content:
         await send_random_meme(message)
+    if 'requin' in message.content:
+        await message.channel.send('\U0001f988')
     cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
     if message.author.id in cursed_members:
