@@ -49,6 +49,7 @@ async def on_ready():
     bot.load_extension("plugins.music")
     bot.load_extension("plugins.memes")
 
+
 @bot.event
 async def on_message(message):
     if message.content.startswith('pouet pouet'):
@@ -61,6 +62,8 @@ async def on_message(message):
         await send_random_meme(message)
     if 'requin' in message.content:
         await message.channel.send('\U0001f988')
+    if 'pot!' in message.content or 'POT!' in message.content:
+        await message.channel.send(file=discord.File('src/images/ya_pot.gif'))
     cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
     if message.author.id in cursed_members:
