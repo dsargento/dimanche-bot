@@ -62,8 +62,30 @@ async def on_message(message):
         await send_random_meme(message)
     if 'requin' in message.content:
         await message.channel.send('\U0001f988')
-    if 'pot!' in message.content or 'POT!' in message.content:
+    if 'pot!' in message.content or 'POT!' in message.content or 'pot!' in message.content:
         await message.channel.send(file=discord.File('src/images/ya_pot.gif'))
+    if 'communiste' in message.content or 'communisme' in message.content:
+        await message.channel.send(file=discord.File('src/images/communisme.gif'))
+    if 'danse' in message.content or 'dance' in message.content:
+        await message.channel.send(file=discord.File('src/images/dance.gif'))
+    if 'formulaire' in message.content:
+        await message.channel.send(file=discord.File('src/images/formulaire.gif'))
+    if 'love' in message.content or 'aime' in message.content or 'amour' in message.content:
+        await message.channel.send(file=discord.File('src/images/love.gif'))
+    if 'accomplie' in message.content or 'gg' in message.content or 'meilleur' in message.content:
+        await message.channel.send(file=discord.File('src/images/meilleurs.gif'))
+    if 'merde' in message.content or 'shit' in message.content or 'merdier' in message.content:
+        await message.channel.send(file=discord.File('src/images/merdier.gif'))
+    if '<@&313664375657594880>' in message.content or 'manger' in message.content or 'midi' in message.content:
+        await message.channel.send(file=discord.File('src/images/midi.gif'))
+    if 'radin' in message.content:
+        await message.channel.send(file=discord.File('src/images/radin.gif'))
+    if 'fait chier' in message.content or 'marre' in message.content or 'ras le bol' in message.content:
+        await message.channel.send(file=discord.File('src/images/ras_le_bol.gif'))
+    if 'risque' in message.content or 'risqué' in message.content:
+        await message.channel.send(file=discord.File('src/images/risque.gif'))
+    if 'tamponné' in message.content or 'validé' in message.content or 'tampon' in message.content:
+        await message.channel.send(file=discord.File('src/images/tampon.gif'))
     cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
     if message.author.id in cursed_members:
