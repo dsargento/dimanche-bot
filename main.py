@@ -74,7 +74,7 @@ async def on_message(message):
         await message.channel.send(file=discord.File('src/images/love.gif'))
     if 'accomplie' in message.content or 'gg' in message.content or 'meilleur' in message.content:
         await message.channel.send(file=discord.File('src/images/meilleurs.gif'))
-    if 'merde' in message.content or 'shit' in message.content or 'merdier' in message.content:
+    if 'merdier' in message.content:
         await message.channel.send(file=discord.File('src/images/merdier.gif'))
     if '<@&313664375657594880>' in message.content or 'manger' in message.content or 'midi' in message.content:
         await message.channel.send(file=discord.File('src/images/midi.gif'))
