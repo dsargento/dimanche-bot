@@ -65,7 +65,7 @@ async def on_message(message):
     if 'pot!' in message.content or 'POT!' in message.content or 'pot!' in message.content:
         await message.channel.send(file=discord.File('src/images/ya_pot.gif'))
     if 'communiste' in message.content or 'communisme' in message.content:
-        await message.channel.send(file=discord.File('src/images/communisme.gif'))
+        await message.channel.send(file=discord.File('src/images/communiste.gif'))
     if 'danse' in message.content or 'dance' in message.content:
         await message.channel.send(file=discord.File('src/images/dance.gif'))
     if 'formulaire' in message.content:
