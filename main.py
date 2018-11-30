@@ -72,7 +72,7 @@ async def on_message(message):
         await message.channel.send(file=discord.File('src/images/formulaire.gif'))
     if 'love' in message.content or 'aime' in message.content or 'amour' in message.content:
         await message.channel.send(file=discord.File('src/images/love.gif'))
-    if 'accomplie' in message.content or 'gg' in message.content or 'meilleur' in message.content:
+    if 'accomplie' in message.content or 'meilleur' in message.content:
         await message.channel.send(file=discord.File('src/images/meilleurs.gif'))
     if 'merdier' in message.content:
         await message.channel.send(file=discord.File('src/images/merdier.gif'))
