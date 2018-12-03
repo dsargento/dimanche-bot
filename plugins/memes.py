@@ -33,6 +33,46 @@ class Memes:
             handler.write(img_data)
         await ctx.send('Added image meme_'+count+extension)
 
+    @commands.command()
+    async def pot(self, ctx):
+        await ctx.send(file=discord.File('src/images/ya_pot.gif'))
+
+    @commands.command()
+    async def communiste(self, ctx):
+        await ctx.send(file=discord.File('src/images/communiste.gif'))
+
+    @commands.command()
+    async def dance(self, ctx):
+        await ctx.send(file=discord.File('src/images/dance.gif'))
+
+    @commands.command()
+    async def formulaire(self, ctx):
+        await ctx.send(file=discord.File('src/images/formulaire.gif'))
+
+    @commands.command()
+    async def love(self, ctx):
+        await ctx.send(file=discord.File('src/images/love.gif'))
+
+    @commands.command()
+    async def meilleurs(self, ctx):
+        await ctx.send(file=discord.File('src/images/meilleurs.gif'))
+
+    @commands.command()
+    async def merdier(self, ctx):
+        await ctx.send(file=discord.File('src/images/merdier.gif'))
+
+    @commands.command()
+    async def marre(self, ctx):
+        await ctx.send(file=discord.File('src/images/ras_le_bol.gif'))
+
+    @commands.command()
+    async def risque(self, ctx):
+        await ctx.send(file=discord.File('src/images/risque.gif'))
+
+    @commands.command()
+    async def tampon(self, ctx):
+        await ctx.send(file=discord.File('src/images/tampon.gif'))
+
 
 def setup(bot):
     bot.add_cog(Memes(bot))
