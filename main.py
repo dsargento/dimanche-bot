@@ -54,12 +54,14 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('pouet pouet'):
         await message.channel.send('GET OUT OF MY HEAD')
-    if message.content.startswith('@everyone') or message.content.startswith('@here'):
+    if '@everyone' in message.content or '@here' in message.content:
         await message.channel.send('<:notifdog:375779565206765578>')
     if '<@395686427100184587>' in message.content or '<@!395686427100184587>' in message.content:
         await message.channel.send('\U0001f44b')
     if '<@&313664375657594880>' in message.content:
         await send_random_meme(message)
+    if 'requin' in message.content:
+        await message.channel.send('\U0001f988')
 
     cursed_members = CURSED_MEMBERS.split()
     cursed_members = list(map(int, cursed_members))
