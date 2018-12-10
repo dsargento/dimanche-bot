@@ -73,6 +73,10 @@ class Memes:
     async def tampon(self, ctx):
         await ctx.send(file=discord.File('src/images/tampon.gif'))
 
+    @commands.command()
+    async def midi(self, ctx):
+        await ctx.send(file=discord.File('src/images/midi.gif'))
+
 
 def setup(bot):
     bot.add_cog(Memes(bot))
