@@ -154,7 +154,7 @@ async def tail_logs(ctx, member: discord.Member = None):
 async def send_random_meme(message):
     path = 'src/images/'
     random_meme = random.choice([x for x in os.listdir(path)
-                                if os.path.isfile(os.path.join(path, x))])
+                                if os.path.isfile(os.path.join(path, x)) and 'meme_' in x])
     path = path + random_meme
     await message.channel.send(file=discord.File(path))
 
